@@ -4,9 +4,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
+import { Slider } from '@/components/ui/slider';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
+  const [monthlyConsumption, setMonthlyConsumption] = useState(5000);
+  const [currentTariff, setCurrentTariff] = useState(6.5);
+  
+  const calculateSavings = () => {
+    const annualCost = monthlyConsumption * currentTariff * 12;
+    const potentialSavings = annualCost * 0.30;
+    return {
+      annual: Math.round(annualCost),
+      savings: Math.round(potentialSavings),
+      percentage: 30
+    };
+  };
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -24,6 +38,7 @@ const Index = () => {
             </div>
             <div className="hidden md:flex items-center gap-8">
               <button onClick={() => scrollToSection('home')} className="text-sm font-medium hover:text-primary transition-colors">Главная</button>
+              <button onClick={() => scrollToSection('calculator')} className="text-sm font-medium hover:text-primary transition-colors">Калькулятор</button>
               <button onClick={() => scrollToSection('services')} className="text-sm font-medium hover:text-primary transition-colors">Услуги</button>
               <button onClick={() => scrollToSection('about')} className="text-sm font-medium hover:text-primary transition-colors">О компании</button>
               <button onClick={() => scrollToSection('cases')} className="text-sm font-medium hover:text-primary transition-colors">Кейсы</button>
@@ -83,6 +98,134 @@ const Index = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Calculator Section */}
+      <section id="calculator" className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-8 lg:px-16">
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-accent">Калькулятор</Badge>
+            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">Рассчитайте свою экономию</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Узнайте, сколько вы можете сэкономить на электроэнергии
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <Card className="border-2 border-primary/20 shadow-2xl">
+              <CardHeader className="bg-gradient-to-br from-primary/5 to-white">
+                <CardTitle className="text-2xl">Интерактивный расчет экономии</CardTitle>
+                <CardDescription>Введите ваши данные для расчета потенциальной выгоды</CardDescription>
+              </CardHeader>
+              <CardContent className="pt-8">
+                <div className="space-y-8">
+                  <div>
+                    <div className="flex justify-between items-center mb-4">
+                      <label className="text-sm font-medium">Среднее потребление электроэнергии в месяц (кВт·ч)</label>
+                      <span className="text-2xl font-bold text-primary">{monthlyConsumption.toLocaleString()}</span>
+                    </div>
+                    <Slider
+                      value={[monthlyConsumption]}
+                      onValueChange={(value) => setMonthlyConsumption(value[0])}
+                      min={500}
+                      max={50000}
+                      step={100}
+                      className="mb-2"
+                    />
+                    <div className="flex justify-between text-xs text-gray-500">
+                      <span>500 кВт·ч</span>
+                      <span>50,000 кВт·ч</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between items-center mb-4">
+                      <label className="text-sm font-medium">Текущий тариф (₽ за кВт·ч)</label>
+                      <span className="text-2xl font-bold text-primary">{currentTariff.toFixed(2)} ₽</span>
+                    </div>
+                    <Slider
+                      value={[currentTariff]}
+                      onValueChange={(value) => setCurrentTariff(value[0])}
+                      min={3}
+                      max={15}
+                      step={0.1}
+                      className="mb-2"
+                    />
+                    <div className="flex justify-between text-xs text-gray-500">
+                      <span>3 ₽</span>
+                      <span>15 ₽</span>
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-accent/10 to-primary/5 rounded-xl p-8 mt-8">
+                    <div className="grid md:grid-cols-3 gap-6">
+                      <div className="text-center">
+                        <div className="text-sm text-gray-600 mb-2">Ваши расходы в год</div>
+                        <div className="text-3xl font-bold text-gray-900">
+                          {calculateSavings().annual.toLocaleString()} ₽
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-sm text-gray-600 mb-2">Потенциальная экономия</div>
+                        <div className="text-3xl font-bold text-accent">
+                          {calculateSavings().savings.toLocaleString()} ₽
+                        </div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-sm text-gray-600 mb-2">Процент экономии</div>
+                        <div className="text-3xl font-bold text-primary">
+                          до {calculateSavings().percentage}%
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-8 p-6 bg-white rounded-lg">
+                      <div className="flex items-start gap-3 mb-4">
+                        <Icon name="Info" className="text-primary mt-1 flex-shrink-0" size={20} />
+                        <p className="text-sm text-gray-600">
+                          <strong>Экономия достигается за счёт:</strong> перехода на прямой договор с энергосбытом, оптимизации мощности, 
+                          правильной работы с приборами учета и выбора оптимального тарифа.
+                        </p>
+                      </div>
+                      <Button 
+                        size="lg" 
+                        className="w-full bg-accent hover:bg-accent/90"
+                        onClick={() => scrollToSection('contacts')}
+                      >
+                        <Icon name="Calculator" className="mr-2" size={20} />
+                        Получить точный расчет
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-3 gap-4 mt-6">
+                    <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                      <Icon name="Check" className="text-accent mt-1 flex-shrink-0" size={20} />
+                      <div className="text-sm">
+                        <div className="font-semibold mb-1">Без посредников</div>
+                        <div className="text-gray-600">Прямой договор с энергосбытом</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                      <Icon name="Check" className="text-accent mt-1 flex-shrink-0" size={20} />
+                      <div className="text-sm">
+                        <div className="font-semibold mb-1">Быстрый результат</div>
+                        <div className="text-gray-600">Экономия с первого месяца</div>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                      <Icon name="Check" className="text-accent mt-1 flex-shrink-0" size={20} />
+                      <div className="text-sm">
+                        <div className="font-semibold mb-1">Полное сопровождение</div>
+                        <div className="text-gray-600">От аудита до реализации</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
