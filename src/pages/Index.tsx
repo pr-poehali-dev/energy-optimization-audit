@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { Slider } from '@/components/ui/slider';
 import Icon from '@/components/ui/icon';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 const Index = () => {
   const [monthlyConsumption, setMonthlyConsumption] = useState(5000);
@@ -27,9 +28,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
         <nav className="container mx-auto px-4 md:px-8 lg:px-16 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -44,15 +45,18 @@ const Index = () => {
               <button onClick={() => scrollToSection('cases')} className="text-sm font-medium hover:text-primary transition-colors">Кейсы</button>
               <button onClick={() => scrollToSection('contacts')} className="text-sm font-medium hover:text-primary transition-colors">Контакты</button>
             </div>
-            <Button onClick={() => scrollToSection('contacts')} className="hidden md:block">
-              Получить консультацию
-            </Button>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <Button onClick={() => scrollToSection('contacts')} className="hidden md:block">
+                Получить консультацию
+              </Button>
+            </div>
           </div>
         </nav>
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 py-16 md:py-24 bg-gradient-to-br from-primary/5 to-white">
+      <section id="home" className="pt-32 pb-20 py-16 md:py-24 bg-gradient-to-br from-primary/5 to-background">
         <div className="container mx-auto px-4 md:px-8 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
@@ -60,7 +64,7 @@ const Index = () => {
               <h1 className="text-5xl md:text-6xl font-heading font-bold mb-6 leading-tight">
                 Снизьте расходы на электроэнергию <span className="text-primary">до 40%</span>
               </h1>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-muted-foreground mb-8">
                 Комплексный энергоаудит, оптимизация договорных отношений и техническое сопровождение для частных лиц и крупных производств
               </p>
               <div className="flex gap-4">
@@ -73,27 +77,27 @@ const Index = () => {
               </div>
             </div>
             <div className="animate-scale-in">
-              <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
+              <div className="bg-card rounded-2xl shadow-2xl p-8 border border-border">
                 <div className="grid grid-cols-2 gap-6">
                   <div className="text-center p-6 bg-primary/5 rounded-xl">
                     <Icon name="TrendingDown" className="mx-auto mb-3 text-accent" size={40} />
                     <div className="text-3xl font-bold text-primary mb-1">40%</div>
-                    <div className="text-sm text-gray-600">Экономия</div>
+                    <div className="text-sm text-muted-foreground">Экономия</div>
                   </div>
                   <div className="text-center p-6 bg-primary/5 rounded-xl">
                     <Icon name="Users" className="mx-auto mb-3 text-accent" size={40} />
                     <div className="text-3xl font-bold text-primary mb-1">500+</div>
-                    <div className="text-sm text-gray-600">Клиентов</div>
+                    <div className="text-sm text-muted-foreground">Клиентов</div>
                   </div>
                   <div className="text-center p-6 bg-primary/5 rounded-xl">
                     <Icon name="Award" className="mx-auto mb-3 text-accent" size={40} />
                     <div className="text-3xl font-bold text-primary mb-1">15 лет</div>
-                    <div className="text-sm text-gray-600">Опыта</div>
+                    <div className="text-sm text-muted-foreground">Опыта</div>
                   </div>
                   <div className="text-center p-6 bg-primary/5 rounded-xl">
                     <Icon name="CheckCircle" className="mx-auto mb-3 text-accent" size={40} />
                     <div className="text-3xl font-bold text-primary mb-1">100%</div>
-                    <div className="text-sm text-gray-600">Результат</div>
+                    <div className="text-sm text-muted-foreground">Результат</div>
                   </div>
                 </div>
               </div>
@@ -103,19 +107,19 @@ const Index = () => {
       </section>
 
       {/* Calculator Section */}
-      <section id="calculator" className="py-16 md:py-24 bg-white">
+      <section id="calculator" className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-8 lg:px-16">
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-accent">Калькулятор</Badge>
             <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">Рассчитайте свою экономию</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Узнайте, сколько вы можете сэкономить на электроэнергии
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto">
             <Card className="border-2 border-primary/20 shadow-2xl">
-              <CardHeader className="bg-gradient-to-br from-primary/5 to-white">
+              <CardHeader className="bg-gradient-to-br from-primary/5 to-card">
                 <CardTitle className="text-2xl">Интерактивный расчет экономии</CardTitle>
                 <CardDescription>Введите ваши данные для расчета потенциальной выгоды</CardDescription>
               </CardHeader>
@@ -134,7 +138,7 @@ const Index = () => {
                       step={100}
                       className="mb-2"
                     />
-                    <div className="flex justify-between text-xs text-gray-500">
+                    <div className="flex justify-between text-xs text-muted-foreground">
                       <span>500 кВт·ч</span>
                       <span>50,000 кВт·ч</span>
                     </div>
@@ -153,7 +157,7 @@ const Index = () => {
                       step={0.1}
                       className="mb-2"
                     />
-                    <div className="flex justify-between text-xs text-gray-500">
+                    <div className="flex justify-between text-xs text-muted-foreground">
                       <span>3 ₽</span>
                       <span>15 ₽</span>
                     </div>
@@ -162,29 +166,29 @@ const Index = () => {
                   <div className="bg-gradient-to-br from-accent/10 to-primary/5 rounded-xl p-8 mt-8">
                     <div className="grid md:grid-cols-3 gap-6">
                       <div className="text-center">
-                        <div className="text-sm text-gray-600 mb-2">Ваши расходы в год</div>
-                        <div className="text-3xl font-bold text-gray-900">
+                        <div className="text-sm text-muted-foreground mb-2">Ваши расходы в год</div>
+                        <div className="text-3xl font-bold text-foreground">
                           {calculateSavings().annual.toLocaleString()} ₽
                         </div>
                       </div>
                       <div className="text-center">
-                        <div className="text-sm text-gray-600 mb-2">Потенциальная экономия</div>
+                        <div className="text-sm text-muted-foreground mb-2">Потенциальная экономия</div>
                         <div className="text-3xl font-bold text-accent">
                           {calculateSavings().savings.toLocaleString()} ₽
                         </div>
                       </div>
                       <div className="text-center">
-                        <div className="text-sm text-gray-600 mb-2">Процент экономии</div>
+                        <div className="text-sm text-muted-foreground mb-2">Процент экономии</div>
                         <div className="text-3xl font-bold text-primary">
                           до {calculateSavings().percentage}%
                         </div>
                       </div>
                     </div>
 
-                    <div className="mt-8 p-6 bg-white rounded-lg">
+                    <div className="mt-8 p-6 bg-card rounded-lg">
                       <div className="flex items-start gap-3 mb-4">
                         <Icon name="Info" className="text-primary mt-1 flex-shrink-0" size={20} />
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-muted-foreground">
                           <strong>Экономия достигается за счёт:</strong> перехода на прямой договор с энергосбытом, оптимизации мощности, 
                           правильной работы с приборами учета и выбора оптимального тарифа.
                         </p>
@@ -201,25 +205,25 @@ const Index = () => {
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-4 mt-6">
-                    <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-start gap-3 p-4 bg-muted rounded-lg">
                       <Icon name="Check" className="text-accent mt-1 flex-shrink-0" size={20} />
                       <div className="text-sm">
                         <div className="font-semibold mb-1">Без посредников</div>
-                        <div className="text-gray-600">Прямой договор с энергосбытом</div>
+                        <div className="text-muted-foreground">Прямой договор с энергосбытом</div>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-start gap-3 p-4 bg-muted rounded-lg">
                       <Icon name="Check" className="text-accent mt-1 flex-shrink-0" size={20} />
                       <div className="text-sm">
                         <div className="font-semibold mb-1">Быстрый результат</div>
-                        <div className="text-gray-600">Экономия с первого месяца</div>
+                        <div className="text-muted-foreground">Экономия с первого месяца</div>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-start gap-3 p-4 bg-muted rounded-lg">
                       <Icon name="Check" className="text-accent mt-1 flex-shrink-0" size={20} />
                       <div className="text-sm">
                         <div className="font-semibold mb-1">Полное сопровождение</div>
-                        <div className="text-gray-600">От аудита до реализации</div>
+                        <div className="text-muted-foreground">От аудита до реализации</div>
                       </div>
                     </div>
                   </div>
@@ -231,7 +235,7 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-16 md:py-24 bg-white">
+      <section id="services" className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-8 lg:px-16">
           <div className="text-center mb-16">
             <Badge className="mb-4">Пакеты услуг</Badge>
@@ -317,16 +321,16 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 md:py-24 bg-gray-50">
+      <section id="about" className="py-16 md:py-24 bg-muted">
         <div className="container mx-auto px-4 md:px-8 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <Badge className="mb-4">О компании</Badge>
               <h2 className="text-4xl font-heading font-bold mb-6">Энеговектор — ваш надёжный партнёр в энергооптимизации</h2>
-              <p className="text-gray-600 mb-4">
+              <p className="text-muted-foreground mb-4">
                 Мы специализируемся на энергоаудите и оптимизации расходов на электроэнергию. Помогаем частным лицам и крупным производствам снижать затраты путём перевода на прямые договоры без посредников.
               </p>
-              <p className="text-gray-600 mb-6">
+              <p className="text-muted-foreground mb-6">
                 Наша команда сертифицированных энергоаудиторов обладает глубокими знаниями в области договорных отношений, работы с мощностью и приборами учета.
               </p>
               <div className="grid grid-cols-2 gap-4">
@@ -334,33 +338,33 @@ const Index = () => {
                   <Icon name="Target" className="text-accent mt-1" size={24} />
                   <div>
                     <div className="font-semibold mb-1">Прозрачность</div>
-                    <div className="text-sm text-gray-600">Понятные условия сотрудничества</div>
+                    <div className="text-sm text-muted-foreground">Понятные условия сотрудничества</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Icon name="Shield" className="text-accent mt-1" size={24} />
                   <div>
                     <div className="font-semibold mb-1">Надёжность</div>
-                    <div className="text-sm text-gray-600">Гарантия результата</div>
+                    <div className="text-sm text-muted-foreground">Гарантия результата</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Icon name="Users" className="text-accent mt-1" size={24} />
                   <div>
                     <div className="font-semibold mb-1">Экспертность</div>
-                    <div className="text-sm text-gray-600">Опытная команда</div>
+                    <div className="text-sm text-muted-foreground">Опытная команда</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Icon name="TrendingUp" className="text-accent mt-1" size={24} />
                   <div>
                     <div className="font-semibold mb-1">Результат</div>
-                    <div className="text-sm text-gray-600">Реальная экономия</div>
+                    <div className="text-sm text-muted-foreground">Реальная экономия</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
+            <div className="bg-card rounded-2xl p-8 shadow-xl">
               <h3 className="text-2xl font-heading font-bold mb-6">Наши преимущества</h3>
               <div className="space-y-6">
                 {[
@@ -375,7 +379,7 @@ const Index = () => {
                     </div>
                     <div>
                       <div className="font-semibold mb-1">{item.title}</div>
-                      <div className="text-sm text-gray-600">{item.desc}</div>
+                      <div className="text-sm text-muted-foreground">{item.desc}</div>
                     </div>
                   </div>
                 ))}
@@ -386,12 +390,12 @@ const Index = () => {
       </section>
 
       {/* Cases Section */}
-      <section id="cases" className="py-16 md:py-24 bg-white">
+      <section id="cases" className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-8 lg:px-16">
           <div className="text-center mb-16">
             <Badge className="mb-4">Кейсы</Badge>
             <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">Успешные проекты</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Реальные результаты наших клиентов
             </p>
           </div>
@@ -434,7 +438,7 @@ const Index = () => {
                   <div className="flex items-center gap-2 bg-accent/10 rounded-lg p-4">
                     <Icon name="TrendingDown" className="text-accent" size={24} />
                     <div>
-                      <div className="text-sm text-gray-600">Экономия</div>
+                      <div className="text-sm text-muted-foreground">Экономия</div>
                       <div className="text-2xl font-bold text-accent">{caseItem.savings}</div>
                     </div>
                   </div>
@@ -446,13 +450,13 @@ const Index = () => {
       </section>
 
       {/* Contacts Section */}
-      <section id="contacts" className="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-white">
+      <section id="contacts" className="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-background">
         <div className="container mx-auto px-4 md:px-8 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <Badge className="mb-4">Контакты</Badge>
               <h2 className="text-4xl font-heading font-bold mb-6">Свяжитесь с нами</h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-muted-foreground mb-8">
                 Оставьте заявку, и наш специалист свяжется с вами в течение часа для бесплатной консультации
               </p>
 
@@ -463,7 +467,7 @@ const Index = () => {
                   </div>
                   <div>
                     <div className="font-semibold mb-1">Телефон</div>
-                    <div className="text-gray-600">+7 (495) 123-45-67</div>
+                    <div className="text-muted-foreground">+7 (495) 123-45-67</div>
                   </div>
                 </div>
 
@@ -473,7 +477,7 @@ const Index = () => {
                   </div>
                   <div>
                     <div className="font-semibold mb-1">Email</div>
-                    <div className="text-gray-600">info@energovektor.ru</div>
+                    <div className="text-muted-foreground">info@energovektor.ru</div>
                   </div>
                 </div>
 
@@ -483,7 +487,7 @@ const Index = () => {
                   </div>
                   <div>
                     <div className="font-semibold mb-1">Адрес</div>
-                    <div className="text-gray-600">Москва, ул. Примерная, д. 1</div>
+                    <div className="text-muted-foreground">Москва, ул. Примерная, д. 1</div>
                   </div>
                 </div>
 
@@ -493,7 +497,7 @@ const Index = () => {
                   </div>
                   <div>
                     <div className="font-semibold mb-1">Режим работы</div>
-                    <div className="text-gray-600">Пн-Пт: 9:00 - 18:00</div>
+                    <div className="text-muted-foreground">Пн-Пт: 9:00 - 18:00</div>
                   </div>
                 </div>
               </div>
@@ -542,7 +546,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-card text-white py-12">
         <div className="container mx-auto px-4 md:px-8 lg:px-16">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
@@ -550,13 +554,13 @@ const Index = () => {
                 <Icon name="Zap" className="text-accent" size={28} />
                 <span className="text-xl font-heading font-bold">Энеговектор</span>
               </div>
-              <p className="text-gray-400 text-sm">
+              <p className="text-muted-foreground text-sm">
                 Профессиональный энергоаудит и оптимизация расходов на электроэнергию
               </p>
             </div>
             <div>
               <h4 className="font-heading font-semibold mb-4">Услуги</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="#services" className="hover:text-accent transition-colors">Энергоаудит</a></li>
                 <li><a href="#services" className="hover:text-accent transition-colors">Техническое сопровождение</a></li>
                 <li><a href="#services" className="hover:text-accent transition-colors">Бухгалтерские услуги</a></li>
@@ -564,7 +568,7 @@ const Index = () => {
             </div>
             <div>
               <h4 className="font-heading font-semibold mb-4">Компания</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="#about" className="hover:text-accent transition-colors">О нас</a></li>
                 <li><a href="#cases" className="hover:text-accent transition-colors">Кейсы</a></li>
                 <li><a href="#contacts" className="hover:text-accent transition-colors">Контакты</a></li>
@@ -572,14 +576,14 @@ const Index = () => {
             </div>
             <div>
               <h4 className="font-heading font-semibold mb-4">Контакты</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>+7 (495) 123-45-67</li>
                 <li>info@energovektor.ru</li>
                 <li>Москва, ул. Примерная, д. 1</li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
+          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
             <p>&copy; 2025 Энеговектор. Все права защищены.</p>
           </div>
         </div>
