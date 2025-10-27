@@ -77,30 +77,11 @@ const Index = () => {
               </div>
             </div>
             <div className="animate-scale-in">
-              <div className="bg-card rounded-2xl shadow-2xl p-8 border border-border">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center p-6 bg-primary/5 rounded-xl">
-                    <Icon name="TrendingDown" className="mx-auto mb-3 text-accent" size={40} />
-                    <div className="text-3xl font-bold text-primary mb-1">40%</div>
-                    <div className="text-sm text-muted-foreground">Экономия</div>
-                  </div>
-                  <div className="text-center p-6 bg-primary/5 rounded-xl">
-                    <Icon name="Users" className="mx-auto mb-3 text-accent" size={40} />
-                    <div className="text-3xl font-bold text-primary mb-1">500+</div>
-                    <div className="text-sm text-muted-foreground">Клиентов</div>
-                  </div>
-                  <div className="text-center p-6 bg-primary/5 rounded-xl">
-                    <Icon name="Award" className="mx-auto mb-3 text-accent" size={40} />
-                    <div className="text-3xl font-bold text-primary mb-1">15 лет</div>
-                    <div className="text-sm text-muted-foreground">Опыта</div>
-                  </div>
-                  <div className="text-center p-6 bg-primary/5 rounded-xl">
-                    <Icon name="CheckCircle" className="mx-auto mb-3 text-accent" size={40} />
-                    <div className="text-3xl font-bold text-primary mb-1">100%</div>
-                    <div className="text-sm text-muted-foreground">Результат</div>
-                  </div>
-                </div>
-              </div>
+              <img 
+                src="https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/b9f88eb8-b50b-4fee-8cdf-6bd994ae1480.jpg" 
+                alt="Энергоэффективное производство"
+                className="rounded-2xl shadow-2xl w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>
@@ -324,7 +305,14 @@ const Index = () => {
       <section id="about" className="py-16 md:py-24 bg-muted">
         <div className="container mx-auto px-4 md:px-8 lg:px-16">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="order-2 md:order-1">
+              <img 
+                src="https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/24ba856a-c4b8-4090-85f4-3f0defddf21a.jpg" 
+                alt="Команда энергоаудиторов"
+                className="rounded-2xl shadow-2xl w-full h-auto object-cover"
+              />
+            </div>
+            <div className="order-1 md:order-2">
               <Badge className="mb-4">О компании</Badge>
               <h2 className="text-4xl font-heading font-bold mb-6">Энеговектор — ваш надёжный партнёр в энергооптимизации</h2>
               <p className="text-muted-foreground mb-4">
@@ -364,7 +352,7 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-card rounded-2xl p-8 shadow-xl">
+            <div className="bg-card rounded-2xl p-8 shadow-xl order-1 md:order-2">
               <h3 className="text-2xl font-heading font-bold mb-6">Наши преимущества</h3>
               <div className="space-y-6">
                 {[
@@ -407,29 +395,30 @@ const Index = () => {
                 category: 'Промышленность',
                 savings: '38%',
                 description: 'Оптимизация энергопотребления крупного производства с переводом на прямой договор',
-                icon: 'Factory'
+                image: 'https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/9120d46e-6ae3-48ad-b6f1-f9e0ab9b6f7f.jpg'
               },
               {
                 title: 'Жилой комплекс',
                 category: 'ЖКХ',
                 savings: '25%',
                 description: 'Снижение расходов на электроэнергию для 350 квартир через работу с приборами учета',
-                icon: 'Building'
+                image: 'https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/0dba43da-474a-4f1d-90b6-ac4af126ed00.jpg'
               },
               {
                 title: 'Торговый центр',
                 category: 'Коммерция',
                 savings: '42%',
                 description: 'Комплексный энергоаудит и технологическое присоединение нового объекта',
-                icon: 'ShoppingCart'
+                image: 'https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/b9f88eb8-b50b-4fee-8cdf-6bd994ae1480.jpg'
               }
             ].map((caseItem, idx) => (
               <Card key={idx} className="transition-transform duration-300 hover:scale-105 overflow-hidden border-none shadow-lg">
-                <div className="h-3 bg-gradient-to-r from-primary to-accent"></div>
+                <img 
+                  src={caseItem.image} 
+                  alt={caseItem.title}
+                  className="w-full h-48 object-cover"
+                />
                 <CardHeader>
-                  <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <Icon name={caseItem.icon} className="text-primary" size={32} />
-                  </div>
                   <Badge className="w-fit mb-2" variant="outline">{caseItem.category}</Badge>
                   <CardTitle className="text-xl">{caseItem.title}</CardTitle>
                   <CardDescription>{caseItem.description}</CardDescription>
