@@ -307,7 +307,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
               <img 
-                src="https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/24ba856a-c4b8-4090-85f4-3f0defddf21a.jpg" 
+                src="https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/be236b6c-6505-415a-85f4-a75982d02de1.jpg" 
                 alt="Команда энергоаудиторов"
                 className="rounded-2xl shadow-2xl w-full h-auto object-cover"
               />
@@ -395,21 +395,21 @@ const Index = () => {
                 category: 'Промышленность',
                 savings: '38%',
                 description: 'Оптимизация энергопотребления крупного производства с переводом на прямой договор',
-                image: 'https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/9120d46e-6ae3-48ad-b6f1-f9e0ab9b6f7f.jpg'
+                image: 'https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/4ea59577-ad9f-4818-917b-9681dc96c0f8.jpg'
               },
               {
                 title: 'Жилой комплекс',
                 category: 'ЖКХ',
                 savings: '25%',
                 description: 'Снижение расходов на электроэнергию для 350 квартир через работу с приборами учета',
-                image: 'https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/0dba43da-474a-4f1d-90b6-ac4af126ed00.jpg'
+                image: 'https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/f6d628e0-ffdb-4eee-b47d-9b2bfbce600a.jpg'
               },
               {
                 title: 'Торговый центр',
                 category: 'Коммерция',
                 savings: '42%',
                 description: 'Комплексный энергоаудит и технологическое присоединение нового объекта',
-                image: 'https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/b9f88eb8-b50b-4fee-8cdf-6bd994ae1480.jpg'
+                image: 'https://cdn.poehali.dev/projects/0ee8a8e5-9462-49d4-8f14-6180a01cd475/files/16962130-7616-4daf-be16-65f41a41def9.jpg'
               }
             ].map((caseItem, idx) => (
               <Card key={idx} className="transition-transform duration-300 hover:scale-105 overflow-hidden border-none shadow-lg">
